@@ -1,0 +1,19 @@
+def get_sum(a,b):
+    if a == b:
+        return a
+    
+    
+    if a > b:
+        x = 0
+        while b <= a:
+            x = x + b
+            b = b + 1
+        return x
+    
+    
+    if b > a:
+        x = 0
+        while a <= b:
+            x = x + a
+            a = a + 1
+        return x
