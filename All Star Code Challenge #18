@@ -1,0 +1,13 @@
+def str_count(strng, letter):
+    x = len(strng)
+    y = 0
+    final = 0
+    while y < x:
+        if strng[y] == letter:
+            final = final + 1
+            y = y + 1
+        else:
+            y = y + 1
+            
+    return final
+            
