@@ -1,0 +1,79 @@
+import random
+import requests, json
+
+
+#find location:
+ipinfo_base_url = "http://ipinfo.io"
+response = requests.get(ipinfo_base_url)
+area_info = response.json()
+city = area_info['city']
+loc = area_info['loc']
+loc_split = loc.split(",")
+print(loc_split[0])
+print(loc_split[1])
+lat = loc_split[0]
+lon = loc_split[1]
+print(city)
+
+water_name = ["Starlight Motor Inn", "Noah's Ark Church", "Chicora Elementary"]
+water_lat = [32.852890, 32.851490, 32.851898]
+water_lon = [-79.972810, -79.975420, -79.969856]
+
+while True:
+
+  question = input("1: need water, 2: have water [1/2]: ")
+
+  if question == "2":
+
+    water_lat.insert(len(water_lat), float(lat))
+    water_lon.insert(len(water_lon), float(lon))
+    name = input("What is the name of the water source? ")
+  
+  if question == "1":
+  
+  
+
+    #turn to float
+    lat = float(lat)
+    lon = float(lon)
+
+    y=len(water_lat)
+    x = 0
+
+    distance_lat = (lat - float(water_lat[x]))
+    distance_lon = (lon - float(water_lon[x]))
+    x = x +1
+
+  
+ 
+
+    #turn to floats
+    distance_lat = float(distance_lat)
+
+
+ 
+  
+  
+    while x < y:
+      if float(water_lat[x]) - lat < distance_lat:
+        distance_lat = lat - float(water_lat[x])
+        x = x+1
+      else:
+        x = x +1
+  
+
+    while x < y:
+      if lon - float(water_lon[x]) < distance_lon:
+        distance_lon = lon - float(water_lat[x])
+
+      else:
+        x = x+1
+
+#print(distance_lat)
+  #print(distance_lon)
+#  print(water_name[x-1])
+
+    
+    print("Your closest clean water source is " + water_name[x-2])
+  
+
